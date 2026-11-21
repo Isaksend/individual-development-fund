@@ -30,6 +30,8 @@
   const burger = $('#burger');
   const nav = $('#nav');
   const toggleMenu = (open) => {
+    // Меню открывается ровно под шапкой (над ней может быть полоса объявления)
+    if (open) nav.style.setProperty('--nav-top', Math.max(0, header.getBoundingClientRect().bottom) + 'px');
     nav.classList.toggle('is-open', open);
     burger.setAttribute('aria-expanded', String(open));
     document.documentElement.style.overflow = open ? 'hidden' : '';
